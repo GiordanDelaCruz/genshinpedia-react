@@ -1,0 +1,13 @@
+a{
+    color:  #212529;
+    text-decoration: none;
+}
+
+.ellipse{
+    border-radius: 50%;
+}
+
+.ellipse:hover{
+    background-color:#9694B1 ;
+    color: white
+}
