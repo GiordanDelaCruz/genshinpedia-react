@@ -1,6 +1,6 @@
 import react from "react";
-import Accordion from "../Accordion/Accordion.jsx";
-import Table from "../Table/Table.jsx";
+import Accordion from "../../Accordion/Accordion.jsx";
+import Table from "../../Table/Table.jsx";
 
 function CharacterSkills(props) {
   const normalAttack = props.skillTalents[0];
@@ -8,6 +8,7 @@ function CharacterSkills(props) {
   const elementalBurst = props.skillTalents[2];
   const passiveTalents = props.passiveTalents;
   const constellations = props.constellations;
+  const vision = props.vision;
 
   return (
     <>
@@ -24,7 +25,7 @@ function CharacterSkills(props) {
         </h4>
         <h5 className="skill-talent-block"> [{normalAttack.name}] </h5>
         <p className="pt-3">{normalAttack.description}</p>
-        <Accordion id={1} skillTalents={normalAttack} />
+        <Accordion skillTalents={normalAttack} vision={vision} />
       </div>
 
       {/* Elemental Skill */}
@@ -39,7 +40,7 @@ function CharacterSkills(props) {
         </h4>
         <h5 className="skill-talent-block"> [{elementalSkill.name}] </h5>
         <p className="pt-3">{elementalSkill.description}</p>
-        <Accordion id={2} skillTalents={elementalSkill} />
+        <Accordion skillTalents={elementalSkill} vision={vision} />
       </div>
 
       {/* Elemental Burst */}
@@ -55,7 +56,7 @@ function CharacterSkills(props) {
         </h4>
         <h5 className="skill-talent-block"> [{elementalBurst.name}] </h5>
         <p className="pt-3">{elementalBurst.description}</p>
-        <Accordion id={3} skillTalents={elementalBurst} />
+        <Accordion skillTalents={elementalBurst} vision={vision} />
       </div>
 
       {/* Passive Talents */}

@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import CharacterProfile from "./pages/CharacterProfile/CharacterProfile.jsx";
 import TestingPage from "./pages/TestingPage/TestingPage.jsx";
+
 // Test Data
 import ganyu_data from "./../test-data/character-info.js";
 
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "characters/ganyu",
+    path: "/characters/ganyu",
     element: (
       <CharacterProfile
         name={ganyu_data.name}
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/testingPage",
-    element: <TestingPage />,
+    element: <TestingPage characterData={ganyu_data} />,
   },
   // {
   //   path:"characters/=characterName",

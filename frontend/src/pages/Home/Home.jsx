@@ -23,28 +23,20 @@ function Home(props) {
 
         {/* //[Part 1]: Render Character Cards */}
         <div className="row py-2">
-          {characters1.map((charElem, index) => {
+          {characters1.map((elem, idx) => {
             return (
               <div key={uuidv4()} className="col">
-                <CharacterCard
-                  id={index}
-                  name={charElem.name}
-                  img={charElem.img}
-                />
+                <CharacterCard name={elem.name} iconUrl={elem.iconUrl} />
               </div>
             );
           })}
         </div>
         <div className="row py-2">
           {/* //[Part 2]: Render Character Cards */}
-          {characters_2.map((charElem, index) => {
+          {characters_2.map((elem, idx) => {
             return (
               <div key={uuidv4()} className="col">
-                <CharacterCard
-                  id={index}
-                  name={charElem.name}
-                  img={charElem.img}
-                />
+                <CharacterCard name={elem.name} iconUrl={elem.iconUrl} />
               </div>
             );
           })}

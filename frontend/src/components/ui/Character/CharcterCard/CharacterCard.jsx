@@ -1,5 +1,5 @@
 import "./CharacterCard.css";
-function CharacterCard(props) {
+function CharacterCard({ name, iconUrl }) {
   return (
     <>
       <div className="text-center zoom">
@@ -7,10 +7,10 @@ function CharacterCard(props) {
           <div className="ellipse">
             <img
               className="character-icon"
-              src={props.img}
-              alt={`A headshot picture of ${props.name}`}
+              src={iconUrl}
+              alt={`A headshot picture of ${name}`}
             />
-            <h4>{props.name}</h4>
+            <h4>{name}</h4>
           </div>
         </a>
       </div>

@@ -1,7 +1,10 @@
 import react from "react";
 import Table from "../Table/Table";
+import { v4 as uuidv4 } from "uuid";
 
-function Accordion({ id, skillTalents }) {
+function Accordion({ skillTalents, vision }) {
+  const accordId = `collapse-${uuidv4()}`;
+
   return (
     <>
       <div>
@@ -12,15 +15,15 @@ function Accordion({ id, skillTalents }) {
                 className="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target={`#collapse${id}`}
+                data-bs-target={`#${accordId}`}
                 aria-expanded="true"
-                aria-controls={`collapse${id}`}
+                aria-controls={accordId}
               >
                 Show Additional Details
               </button>
             </h2>
             <div
-              id={`collapse${id}`}
+              id={accordId}
               className="accordion-collapse collapse"
               data-bs-parent=""
             >

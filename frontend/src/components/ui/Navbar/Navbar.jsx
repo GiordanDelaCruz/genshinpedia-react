@@ -4,7 +4,7 @@ function Navbar({ isCharacterPage }) {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand zoom" href="/">
             <img
               className="genshin-impact-logo"
               src="/images/paimon-logo.png"

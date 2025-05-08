@@ -6,16 +6,17 @@ import Navbar from "../../components/ui/Navbar/Navbar.jsx";
 import Footer from "../../components/ui/Footer/Footer.jsx";
 
 // import CharacterContent from "../components/logic/Character/CharacterContent";
-import CharacterSideBar from "../../components/ui/Character/CharacterSideBar.jsx";
+import CharacterSideBar from "../../components/ui/Character/CharacterSideBar/CharacterSideBar.jsx";
 import ganyu_data from "../../../test-data/character-info";
 
 // TEMP COMPONENTS
-import CharacterIntro from "../../components/ui/Character/CharacterIntro.jsx";
-import CharacterSkills from "../../components/ui/Character/CharacterSkills.jsx";
+import CharacterIntro from "../../components/ui/Character/CharacterIntro/CharacterIntro.jsx";
+import CharacterSkills from "../../components/ui/Character/CharacterSkills/CharacterSkills.jsx";
 
 function CharacterProfile(props) {
   const imageName = ganyu_data.name.toLowerCase();
   const vision = ganyu_data.vision.toLowerCase();
+
   return (
     <>
       {/* Navbar */}
@@ -39,6 +40,7 @@ function CharacterProfile(props) {
               skillTalents={props.skillTalents}
               passiveTalents={props.passiveTalents}
               constellations={props.constellations}
+              vision={vision}
             />
           </div>
           <div className="col-lg-3">
