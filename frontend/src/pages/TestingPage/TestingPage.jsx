@@ -8,7 +8,7 @@ import CharacterSideBar from "../../components/ui/Character/CharacterSideBar/Cha
 
 // Testing Components
 import CharacterProfileTest from "../CharacterProfile/CharacterProfile.test.jsx";
-import CharacterInfoBlockTest from "../../components/ui/Character/CharacterInfoBlock/CharacterInfoBlock.test.jsx";
+import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.test.jsx";
 
 function TestingPage({ characterData }) {
   return (

@@ -1,9 +1,13 @@
+import { v4 as uuidv4 } from "uuid";
 import Accordion from "../../Accordion/Accordion";
 
-function CharacterInfoBlockTest({ id, iconURL, skillTalent, vision }) {
+function InfoBlockTest({ id, iconURL, skillTalent, vision }) {
   return (
     <>
-      <div>
+      <div
+        key={uuidv4()}
+        className="bg-dark text-white px-4 pt-2 pb-4 my-5 rounded border shadow"
+      >
         <h4 id={id} className="pt-4 skill-talent-block">
           <img id="" className="talent-icon" src={iconURL} alt="" />
           {` ${skillTalent.unlock}:`}
@@ -16,4 +20,4 @@ function CharacterInfoBlockTest({ id, iconURL, skillTalent, vision }) {
   );
 }
 
-export default CharacterInfoBlockTest;
+export default InfoBlockTest;

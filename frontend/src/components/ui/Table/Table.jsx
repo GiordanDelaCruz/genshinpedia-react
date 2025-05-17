@@ -1,17 +1,21 @@
-import react from "react";
+import { v4 as uuidv4 } from "uuid";
 
-function Table(props) {
+function Table({ skillTalents }) {
   return (
     <>
       <table className="table custom-table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Upgrade</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
         <tbody>
-          {props.skillTalents.upgrades.map((elem, index) => {
+          {skillTalents.upgrades.map((elem, index) => {
             return (
-              <tr>
-                {/* Name */}
-                <td className="">{elem.name}</td>
-                {/* Value */}
-                <td className="">{elem.value}</td>
+              <tr key={uuidv4()}>
+                <td>{elem.name}</td>
+                <td>{elem.value}</td>
               </tr>
             );
           })}
