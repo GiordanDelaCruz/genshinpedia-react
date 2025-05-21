@@ -1,5 +1,34 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import CharacterNavMenu from "./CharacterNavMenu";
+
 function Navbar({ isCharacterPage }) {
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) {
+      alert("Please enter a character name.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3008/character-search",
+        {
+          character: input,
+        }
+      );
+
+      // Navigate and pass response data as route state
+      navigate("/character-profile", { state: response.data });
+    } catch (err) {
+      console.error("Character not found or API error:", err);
+      alert("Character not found.");
+    }
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -27,11 +56,12 @@ function Navbar({ isCharacterPage }) {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {isCharacterPage && <CharacterNavMenu />}
             </ul>
-            <form className="d-flex" method="post" role="search">
+            <form className="d-flex" onSubmit={handleSubmit} role="search">
               <input
                 className="form-control me-2"
                 type="search"
-                name="character"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="Character Search"
                 aria-label="Search"
               />
@@ -39,7 +69,6 @@ function Navbar({ isCharacterPage }) {
                 className="btn btn-outline-success"
                 type="submit"
                 value="Search"
-                formAction="/post-character"
               >
                 Search
               </button>

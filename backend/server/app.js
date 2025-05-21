@@ -2,59 +2,48 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import morgan from "morgan";
-import {dirname} from "path";
-import { fileURLToPath } from "url";
+import cors from "cors";
 
 const app = express();
-const port = process.env.PORT || 3000;
-const __dirname = dirname(fileURLToPath(import.meta.url));  
+const port = process.env.PORT || 3008;
+app.use(cors()); // Allow all origins by default
 const API_URL = "https://genshin.jmp.blue";
 
-app.set("view engine", "ejs");      // Load EJS templates
-
-/***********************************************************/
-/******              Middlewares                      ******/
-/***********************************************************/
-app.use(express.static("public"));
+// Middlewares
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json()); // ✅ Add this to parse JSON bodies
 
-/***********************************************************/
-/******             Route Handling                    ******/
-/***********************************************************/
-// Get Homepage
+// Homepage test
 app.get("/", (req, res) => {
-    try{
-        res.send("Hi")
-    }catch(error) {
-        console.log(error);
-    }
+  res.send("Hi");
 });
 
-// Handle Character Query
+// POST route
 app.post("/character-search", async (req, res) => {
-    const character = req.body.character.toLowerCase().replace(" ", "-");
-    try{
-        const result = await axios.get(API_URL + "/characters/" + character);
-        res.send(result.data);
-    }catch(error) {
-        console.log(error);
-    }
+  console.log("Received body:", req.body); // ✅ Add this
+  const character = req.body.character?.toLowerCase().replace(" ", "-");
+  try {
+    const result = await axios.get(`${API_URL}/characters/${character}`);
+    res.send(result.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Character not found or server error" });
+  }
 });
 
-// TESTING
+// Test GET route
 app.get("/character-search-test", async (req, res) => {
-    try{        
-        const result = await axios.get(API_URL + "/characters/ganyu");
-        res.send(result.data);
-    }catch(error) {
-        console.log(error);
-    }
+  try {
+    const result = await axios.get(`${API_URL}/characters/ganyu`);
+    res.send(result.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch test character" });
+  }
 });
 
-/***********************************************************/
-/******              Start Server                     ******/
-/***********************************************************/
-app.listen( port, () => {
-    console.log(`Server started on port ${3000}`);
+// Start server
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });

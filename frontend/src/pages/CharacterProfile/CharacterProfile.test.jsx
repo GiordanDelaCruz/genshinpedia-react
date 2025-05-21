@@ -1,5 +1,6 @@
 import react from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 // React Components
 import Navbar from "../../components/ui/Navbar/Navbar.jsx";
@@ -12,27 +13,31 @@ import CharacterSideBarTest from "../../components/ui/Character/CharacterSideBar
 import CharacterIntroTest from "../../components/ui/Character/CharacterIntro/CharacterIntro.test.jsx";
 import Carousel from "../../components/ui/Carousel/Carousel.jsx";
 
-function CharacterProfileTest({ characterData }) {
-  const name = characterData.name;
-  const title = characterData.title;
-  const vision = characterData.vision.toLowerCase();
-  const weapon = characterData.weapon.toLowerCase();
-  const gender = characterData.gender;
-  const nation = characterData.nation;
-  const affiliation = characterData.affiliation;
-  const rarity = characterData.rarity;
-  const release = characterData.release;
-  const constellation = characterData.constellation;
-  const birthday = characterData.birthday;
-  const description = characterData.description;
+function CharacterProfileTest() {
+  const { state } = useLocation();
 
-  const skillTalents = characterData.skillTalents;
+  if (!state) return <p>No character data found.</p>;
+
+  const name = state.name;
+  const title = state.title;
+  const vision = state.vision.toLowerCase();
+  const weapon = state.weapon.toLowerCase();
+  const gender = state.gender;
+  const nation = state.nation;
+  const affiliation = state.affiliation;
+  const rarity = state.rarity;
+  const release = state.release;
+  const constellation = state.constellation;
+  const birthday = state.birthday;
+  const description = state.description;
+
+  const skillTalents = state.skillTalents;
 
   const normalAttack = skillTalents[0];
   const elementalSkill = skillTalents[1];
   const elementalBurst = skillTalents[2];
-  const passiveTalents = characterData.passiveTalents;
-  const constellations = characterData.constellations;
+  const passiveTalents = state.passiveTalents;
+  const constellations = state.constellations;
 
   // TODO: Get image links in here
   const galleryImages = [
