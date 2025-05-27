@@ -18,6 +18,7 @@ function CharacterProfileTest() {
 
   if (!state) return <p>No character data found.</p>;
 
+  const characterId = state.id;
   const name = state.name;
   const title = state.title;
   const vision = state.vision.toLowerCase();
@@ -41,22 +42,22 @@ function CharacterProfileTest() {
 
   // TODO: Get image links in here
   const galleryImages = [
-    `https://genshin.jmp.blue/characters/${name.toLowerCase()}/card/`,
-    `https://genshin.jmp.blue/characters/${name.toLowerCase()}/gacha-card`,
-    `https://genshin.jmp.blue/characters/${name.toLowerCase()}/namecard-background`,
-    `https://genshin.jmp.blue/characters/${name.toLowerCase()}/gacha-splash`,
+    `https://genshin.jmp.blue/characters/${characterId}/card/`,
+    `https://genshin.jmp.blue/characters/${characterId}/gacha-card`,
+    `https://genshin.jmp.blue/characters/${characterId}/namecard-background`,
+    `https://genshin.jmp.blue/characters/${characterId}/gacha-splash`,
   ];
 
-  const characterIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/icon`;
+  const characterIconUrl = `https://genshin.jmp.blue/characters/${characterId}/icon`;
   const visionUrl = `https://genshin.jmp.blue/elements/${vision}/icon/`;
   const weaponUrl = `/images/${weapon}.webp`;
   const nationUrl = `https://genshin.jmp.blue/nations/${nation.toLowerCase()}/icon`;
-  const normalAttackIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/talent-na`;
-  const elementalSkillIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/talent-skill`;
-  const elementalBurstIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/talent-burst`;
-  const passiveTalentIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/talent-passive-`;
-  const constellationIconUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/constellation-`;
-  const characterCardUrl = `https://genshin.jmp.blue/characters/${name.toLowerCase()}/card/`;
+  const normalAttackIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-na`;
+  const elementalSkillIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-skill`;
+  const elementalBurstIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-burst`;
+  const passiveTalentIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-passive-`;
+  const constellationIconUrl = `https://genshin.jmp.blue/characters/${characterId}/constellation-`;
+  const characterCardUrl = `https://genshin.jmp.blue/characters/${characterId}/card/`;
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import Accordion from "../../Accordion/Accordion";
+import "./InfoBlock.css";
 
 function InfoBlockTest({ id, iconURL, skillTalent, vision }) {
   return (
@@ -8,7 +9,7 @@ function InfoBlockTest({ id, iconURL, skillTalent, vision }) {
         key={uuidv4()}
         className="bg-dark text-white px-4 pt-2 pb-4 my-5 rounded border shadow"
       >
-        <h4 id={id} className="pt-4 skill-talent-block">
+        <h4 id={id} className="pt-4 skill-talent-block scroll-target">
           <img id="" className="talent-icon" src={iconURL} alt="" />
           {` ${skillTalent.unlock}:`}
         </h4>

@@ -5,9 +5,10 @@ a{
 
 .ellipse{
     border-radius: 50%;
+    cursor: "pointer";
 }
 
 .ellipse:hover{
-    background-color:#9694B1 ;
-    color: white
+    background-color:#F8DEA7 ;
+    color: #333333;
 }

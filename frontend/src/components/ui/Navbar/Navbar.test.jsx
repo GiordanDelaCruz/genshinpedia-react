@@ -49,7 +49,7 @@ function Navbar({ isCharacterPage }) {
     <>
       <nav
         className={`navbar navbar-expand-lg sticky-top ${
-          !scrolled ? "bg-light navbar-light" : "bg-dark navbar-dark"
+          scrolled ? "ga-navbar-dark" : "navbar-stationary"
         }`}
       >
         <div className="container-fluid">
@@ -86,8 +86,7 @@ function Navbar({ isCharacterPage }) {
                 aria-label="Search"
               />
               <button
-                // className={`btn ${!scrolled ? "btn-dark" : "btn-light"}`}
-                className={`btn ${!scrolled ? "btn-gold" : "btn-gold-inverse"}`}
+                className="btn ga-button-dark"
                 type="submit"
                 value="Search"
               >
