@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import CharacterNavMenu from "./CharacterNavMenu";
 import "./Navbar.css";
 
+const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
+
 function Navbar({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
@@ -30,12 +32,7 @@ function Navbar({ isCharacterPage }) {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3008/character-search",
-        {
-          character: input,
-        }
-      );
+      const response = await axios.post(CHARACTER_API, { character: input });
 
       // Navigate and pass response data as route state
       navigate("/character-profile", { state: response.data });

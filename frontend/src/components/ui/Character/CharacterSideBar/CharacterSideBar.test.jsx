@@ -29,14 +29,7 @@ function CharacterSideBarTest({
   return (
     <div className="bg-dark text-white ounded border shadow text-center rounded">
       <div className="row py-2">
-        <div className="col-lg-12 className">
-          {/* Nation */}
-          {/* <img className="nation-icon" src={nationUrl} alt="" /> */}
-          {/* Weapon */}
-          {/* <img className="weapon-icon" src={weaponUrl} alt="" /> */}
-          {/* Vision */}
-          {/* <img className="vision-icon" src={visionUrl} alt="" /> */}
-
+        <div className="col-lg-12">
           {/* Rarity */}
           {dummyArr.map((elem, index) => {
             return (

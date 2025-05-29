@@ -33,14 +33,13 @@ function CharacterProfileTest() {
   const description = state.description;
 
   const skillTalents = state.skillTalents;
-
   const normalAttack = skillTalents[0];
   const elementalSkill = skillTalents[1];
   const elementalBurst = skillTalents[2];
   const passiveTalents = state.passiveTalents;
   const constellations = state.constellations;
 
-  // TODO: Get image links in here
+  // Carosel
   const galleryImages = [
     `https://genshin.jmp.blue/characters/${characterId}/card/`,
     `https://genshin.jmp.blue/characters/${characterId}/gacha-card`,
@@ -69,7 +68,26 @@ function CharacterProfileTest() {
           {/* <Carousel galleryImages={galleryImages} /> */}
         </div>
         <div className="row">
-          <div className="col-lg-9">
+          {/* Sidebar - shown FIRST on small screens, SECOND on large screens */}
+          <div className="col-lg-3 order-1 order-lg-2">
+            <CharacterSideBarTest
+              rarity={rarity}
+              imageUrl={characterCardUrl}
+              galleryImages={galleryImages}
+              visionUrl={visionUrl}
+              weaponUrl={weaponUrl}
+              nationUrl={nationUrl}
+              gender={gender}
+              nation={nation}
+              affiliation={affiliation}
+              constellation={constellation}
+              birthday={birthday}
+              release={release}
+            />
+          </div>
+
+          {/* Intro - shown SECOND on small screens, FIRST on large screens */}
+          <div className="col-lg-9 order-2 order-lg-1">
             <CharacterIntroTest
               characterIconUrl={characterIconUrl}
               visionUrl={visionUrl}
@@ -96,22 +114,6 @@ function CharacterProfileTest() {
               iconURL={elementalBurstIconUrl}
               skillTalent={elementalBurst}
               vision={vision}
-            />
-          </div>
-          <div className="col-lg-3">
-            <CharacterSideBarTest
-              rarity={rarity}
-              imageUrl={characterCardUrl}
-              galleryImages={galleryImages}
-              visionUrl={visionUrl}
-              weaponUrl={weaponUrl}
-              nationUrl={nationUrl}
-              gender={gender}
-              nation={nation}
-              affiliation={affiliation}
-              constellation={constellation}
-              birthday={birthday}
-              release={release}
             />
           </div>
         </div>

@@ -13,32 +13,44 @@ function StatsTableTest({ id, iconUrl, title, arrayData }) {
         <table className="table custom-table text-center table-hover table-bordered ">
           <thead>
             <tr>
-              <th scope="col">Icon</th>
-              <th scope="col">Name</th>
-              <th scope="col">Unlock</th>
-              <th scope="col">Level</th>
-              <th scope="col">Description</th>
+              <th scope="col" className="w-auto">
+                Icon
+              </th>
+              <th scope="col" className="w-auto">
+                Name
+              </th>
+              <th scope="col" className="w-auto">
+                Unlock
+              </th>
+              <th scope="col" className="w-auto">
+                Level
+              </th>
+              <th scope="col" className="text-start">
+                Description
+              </th>
             </tr>
           </thead>
           <tbody>
             {arrayData.map((elem, index) => {
               return (
                 <tr key={uuidv4()}>
-                  <td className="align-middle">
+                  <td className="align-middle w-auto">
                     <img
                       className="genshin-table-icon"
                       src={
-                        title == "Constellations"
+                        title === "Constellations"
                           ? `${iconUrl}${index + 1}`
                           : `${iconUrl}${index}`
                       }
                       alt=""
                     />
                   </td>
-                  <td className="align-middle ">{elem.name} </td>
-                  <td className="align-middle">{elem.unlock}</td>
-                  <td className="align-middle">{elem.level}</td>
-                  <td className="align-middle">{elem.description}</td>
+                  <td className="align-middle w-auto">{elem.name}</td>
+                  <td className="align-middle w-auto">{elem.unlock}</td>
+                  <td className="align-middle w-auto">{elem.level}</td>
+                  <td className="align-middle text-start">
+                    {elem.description}
+                  </td>
                 </tr>
               );
             })}

@@ -1,10 +1,8 @@
-import react from "react";
-
 function Footer(props) {
   const year = new Date().getFullYear();
   return (
-    <div>
-      <footer>
+    <>
+      <footer className="bg-light py-3">
         <div className="container text-center">
           <div className="row">
             <div className="col-lg-12">
@@ -13,7 +11,7 @@ function Footer(props) {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // React Components
 import Home from "./pages/Home/Home.jsx";
+import HomeTest from "./pages/Home/Home.test.jsx";
 import CharacterProfile from "./pages/CharacterProfile/CharacterProfile.jsx";
 import CharacterProfileTest from "./pages/CharacterProfile/CharacterProfile.test.jsx";
 import TestingPage from "./pages/TestingPage/TestingPage.jsx";
@@ -15,7 +16,7 @@ import ganyu_data from "./../test-data/character-info.js";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <HomeTest />,
   },
   {
     path: "/character-profile",
