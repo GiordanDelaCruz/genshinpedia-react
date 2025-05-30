@@ -6,6 +6,9 @@ import "./Navbar.css";
 
 const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
 
+// TESTING
+console.log("API URL:", import.meta.env.VITE_CHARACTER_API);
+
 function Navbar({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
