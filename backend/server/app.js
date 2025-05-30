@@ -3,11 +3,12 @@ import axios from "axios";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
+import 'dotenv/config';
 
 const app = express();
 const port = process.env.PORT || 3008;
 app.use(cors()); // Allow all origins by default
-const API_URL = "https://genshin.jmp.blue";
+const API_URL = process.env.API_URL;
 
 // Middlewares
 app.use(morgan("dev"));
