@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import CharacterNavMenu from "./CharacterNavMenu";
 import "./Navbar.css";
 
+const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
+
+// TESTING
+console.log("API URL:", import.meta.env.VITE_CHARACTER_API);
+
 function Navbar({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
@@ -30,12 +35,9 @@ function Navbar({ isCharacterPage }) {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3008/character-search",
-        {
-          character: input,
-        }
-      );
+      const response = await axios.post(`${CHARACTER_API}/character-search`, {
+        character: input,
+      });
 
       // Navigate and pass response data as route state
       navigate("/character-profile", { state: response.data });
@@ -49,7 +51,7 @@ function Navbar({ isCharacterPage }) {
     <>
       <nav
         className={`navbar navbar-expand-lg sticky-top ${
-          scrolled ? "ga-navbar-dark" : "navbar-stationary"
+          !scrolled ? "bg-light navbar-light" : "bg-dark navbar-dark"
         }`}
       >
         <div className="container-fluid">
@@ -86,7 +88,8 @@ function Navbar({ isCharacterPage }) {
                 aria-label="Search"
               />
               <button
-                className="btn ga-button-dark"
+                // className={`btn ${!scrolled ? "btn-dark" : "btn-light"}`}
+                className={`btn ${!scrolled ? "btn-gold" : "btn-gold-inverse"}`}
                 type="submit"
                 value="Search"
               >

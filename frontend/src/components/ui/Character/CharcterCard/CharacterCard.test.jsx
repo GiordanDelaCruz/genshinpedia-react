@@ -2,18 +2,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./CharacterCard.css";
 
+const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
+
 function CharacterCard({ name, iconUrl }) {
   const navigate = useNavigate();
 
   const handleClick = async () => {
     if (!name) return alert("Character name missing");
     try {
-      const response = await axios.post(
-        "http://localhost:3008/character-search",
-        {
-          character: name,
-        }
-      );
+      const response = await axios.post(`${CHARACTER_API}/character-search`, {
+        character: name,
+      });
 
       // Navigate and pass response data as route state
       navigate("/character-profile", { state: response.data });
