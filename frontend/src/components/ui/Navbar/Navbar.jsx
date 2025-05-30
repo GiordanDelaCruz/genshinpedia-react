@@ -32,7 +32,9 @@ function Navbar({ isCharacterPage }) {
     }
 
     try {
-      const response = await axios.post(CHARACTER_API, { character: input });
+      const response = await axios.post(`${CHARACTER_API}/character-search`, {
+        character: input,
+      });
 
       // Navigate and pass response data as route state
       navigate("/character-profile", { state: response.data });
