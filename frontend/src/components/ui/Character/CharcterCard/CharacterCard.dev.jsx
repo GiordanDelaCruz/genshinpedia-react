@@ -4,7 +4,7 @@ import "./CharacterCard.css";
 
 const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
 
-function CharacterCard({ name, iconUrl }) {
+function CharacterCardDev({ name, iconUrl }) {
   const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -38,4 +38,4 @@ function CharacterCard({ name, iconUrl }) {
   );
 }
 
-export default CharacterCard;
+export default CharacterCardDev;

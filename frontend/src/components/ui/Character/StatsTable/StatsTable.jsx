@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import "./StatsTable.css";
 
-function StatsTableTest({ id, iconUrl, title, arrayData }) {
+function StatsTableDev({ id, iconUrl, title, arrayData }) {
   return (
     <>
       <div className="bg-dark text-white px-4 pt-2 pb-3 mb-5 rounded border shadow">
@@ -50,4 +50,4 @@ function StatsTableTest({ id, iconUrl, title, arrayData }) {
   );
 }
 
-export default StatsTableTest;
+export default StatsTableDev;

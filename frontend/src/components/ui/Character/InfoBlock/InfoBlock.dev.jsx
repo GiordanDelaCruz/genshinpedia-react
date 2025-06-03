@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import Accordion from "../../Accordion/Accordion";
 import "./InfoBlock.css";
 
-function InfoBlockTest({ id, iconURL, skillTalent, vision }) {
+function InfoBlockDev({ id, iconURL, skillTalent, vision }) {
   return (
     <>
       <div
@@ -21,4 +21,4 @@ function InfoBlockTest({ id, iconURL, skillTalent, vision }) {
   );
 }
 
-export default InfoBlockTest;
+export default InfoBlockDev;

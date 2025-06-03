@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Carousel from "../../Carousel/Carousel.jsx";
 
-function CharacterSideBarTest({
+function CharacterSideBarDev({
   rarity,
   imageUrl,
   galleryImages,
@@ -87,4 +87,4 @@ function CharacterSideBarTest({
   );
 }
 
-export default CharacterSideBarTest;
+export default CharacterSideBarDev;

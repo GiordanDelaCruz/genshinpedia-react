@@ -1,6 +1,6 @@
 import Accordion from "../../Accordion/Accordion.jsx";
 
-function CharacterSkillsTest(props) {
+function CharacterSkillsDev(props) {
   const normalAttack = props.skillTalents[0];
   const elementalSkill = props.skillTalents[1];
   const elementalBurst = props.skillTalents[2];
@@ -118,4 +118,4 @@ function CharacterSkillsTest(props) {
   );
 }
 
-export default CharacterSkillsTest;
+export default CharacterSkillsDev;

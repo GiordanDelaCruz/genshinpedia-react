@@ -1,4 +1,4 @@
-function CharacterIntroTest({
+function CharacterIntroDev({
   characterIconUrl,
   visionUrl,
   weaponUrl,
@@ -42,4 +42,4 @@ function CharacterIntroTest({
   );
 }
 
-export default CharacterIntroTest;
+export default CharacterIntroDev;

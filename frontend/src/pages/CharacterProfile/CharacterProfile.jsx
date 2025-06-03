@@ -7,10 +7,10 @@ import Navbar from "../../components/ui/Navbar/Navbar.jsx";
 import Footer from "../../components/ui/Footer/Footer.jsx";
 
 // Testing Components
-import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.test.jsx";
-import CharacterInfoTableTest from "../../components/ui/Character/StatsTable/StatsTable.test.jsx";
-import CharacterSideBarTest from "../../components/ui/Character/CharacterSideBar/CharacterSideBar.test.jsx";
-import CharacterIntroTest from "../../components/ui/Character/CharacterIntro/CharacterIntro.test.jsx";
+import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.dev.jsx";
+import CharacterInfoTableTest from "../../components/ui/Character/StatsTable/StatsTable.dev.jsx";
+import CharacterSideBar from "../../components/ui/Character/CharacterSideBar/CharacterSideBar.dev";
+import CharacterIntro from "../../components/ui/Character/CharacterIntro/CharacterIntro.jsx";
 import Carousel from "../../components/ui/Carousel/Carousel.jsx";
 
 function CharacterProfile() {
@@ -64,13 +64,10 @@ function CharacterProfile() {
       <Navbar isCharacterPage={true} />
 
       <div className="container my-5 px-4">
-        <div className="">
-          {/* <Carousel galleryImages={galleryImages} /> */}
-        </div>
         <div className="row">
           {/* Sidebar - shown FIRST on small screens, SECOND on large screens */}
           <div className="col-lg-3 order-1 order-lg-2">
-            <CharacterSideBarTest
+            <CharacterSideBar
               rarity={rarity}
               imageUrl={characterCardUrl}
               galleryImages={galleryImages}

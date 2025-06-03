@@ -1,6 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-
 function CharacterNavMenu() {
+  // Scroll smoothly to a section by ID
   const handleScrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -8,6 +7,7 @@ function CharacterNavMenu() {
     }
   };
 
+  // List of navigation items and their section ID
   const characterNavLinks = [
     { name: "Normal Attack", id: "normalAttack" },
     { name: "Elemental Skill", id: "elementalSkill" },

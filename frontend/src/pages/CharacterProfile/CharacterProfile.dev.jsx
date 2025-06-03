@@ -6,14 +6,16 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../../components/ui/Navbar/Navbar.jsx";
 import Footer from "../../components/ui/Footer/Footer.jsx";
 
-// Testing Components
-import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.test.jsx";
-import CharacterInfoTableTest from "../../components/ui/Character/StatsTable/StatsTable.test.jsx";
-import CharacterSideBarTest from "../../components/ui/Character/CharacterSideBar/CharacterSideBar.test.jsx";
-import CharacterIntroTest from "../../components/ui/Character/CharacterIntro/CharacterIntro.test.jsx";
+// Development Components
+import NavbarDev from "./../../components/ui/Navbar/Navbar.dev";
+import FooterDev from "./../../components/ui/Footer/Footer.dev";
+import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.dev.jsx";
+import CharacterInfoTableTest from "../../components/ui/Character/StatsTable/StatsTable.dev.jsx";
+import CharacterSideBarDev from "./../../components/ui/Character/CharacterSideBar/CharacterSideBar.dev";
+import CharacterIntroDev from "./../../components/ui/Character/CharacterIntro/CharacterIntro.dev";
 import Carousel from "../../components/ui/Carousel/Carousel.jsx";
 
-function CharacterProfileTest() {
+function CharacterProfileDev() {
   const { state } = useLocation();
 
   if (!state) return <p>No character data found.</p>;
@@ -70,7 +72,7 @@ function CharacterProfileTest() {
         <div className="row">
           {/* Sidebar - shown FIRST on small screens, SECOND on large screens */}
           <div className="col-lg-3 order-1 order-lg-2">
-            <CharacterSideBarTest
+            <CharacterSideBarDev
               rarity={rarity}
               imageUrl={characterCardUrl}
               galleryImages={galleryImages}
@@ -88,7 +90,7 @@ function CharacterProfileTest() {
 
           {/* Intro - shown SECOND on small screens, FIRST on large screens */}
           <div className="col-lg-9 order-2 order-lg-1">
-            <CharacterIntroTest
+            <CharacterIntroDev
               characterIconUrl={characterIconUrl}
               visionUrl={visionUrl}
               weaponUrl={weaponUrl}
@@ -146,4 +148,4 @@ function CharacterProfileTest() {
   );
 }
 
-export default CharacterProfileTest;
+export default CharacterProfileDev;

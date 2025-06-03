@@ -7,7 +7,7 @@ import Navbar from "../../components/ui/Navbar/Navbar.jsx";
 import Footer from "../../components/ui/Footer/Footer.jsx";
 
 // Data
-import characters from "./../../data/characters.js";
+import characters from "../../data/characters.js";
 
 // Utility
 import chunkArray from "../../utils/chunkArray.js";
