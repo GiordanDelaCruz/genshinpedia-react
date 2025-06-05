@@ -1,72 +1,90 @@
 import { v4 as uuidv4 } from "uuid";
 
-function CharacterSideBar(props) {
+import Carousel from "../../Carousel/Carousel.jsx";
+
+function CharacterSideBarDev({
+  rarity,
+  imageUrl,
+  galleryImages,
+  visionUrl,
+  weaponUrl,
+  nationUrl,
+  gender,
+  nation,
+  affiliation,
+  constellation,
+  birthday,
+  release,
+}) {
   let dummyArr = [];
-  if (props.rarity === 5) {
+  if (rarity === 5) {
     dummyArr = [0, 0, 0, 0, 0];
-    console.log("rarity: " + props.rarity);
-  } else if (props.rarity == 4) {
+    console.log("rarity: " + rarity);
+  } else if (rarity == 4) {
     dummyArr = [0, 0, 0, 0];
   } else {
     dummyArr = [0];
   }
 
   return (
-    <>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+    <div className="bg-dark text-white ounded border shadow text-center rounded">
+      <div className="row py-2">
+        <div className="col-lg-12">
           {/* Rarity */}
           {dummyArr.map((elem, index) => {
-            return <i key={uuidv4()} className="fa-solid fa-star fa-2x"></i>;
+            return (
+              <i
+                key={uuidv4()}
+                className="fa-solid fa-star fa-2x my-2 gold-star"
+              ></i>
+            );
           })}
         </div>
       </div>
-      <div className="row text-center">
+      <div className="row">
         {/* Character Image */}
-        <img
-          className="character-image mx-auto"
-          src={`https://genshin.jmp.blue/characters/${props.imageName}/card/`}
-          alt=""
-        />
+        <img className="character-image mx-auto" src={imageUrl} alt="" />
+
+        {/* <Carousel galleryImages={galleryImages} /> */}
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Gender */}
-          <p> Gender: {props.gender} </p>
+          <p> Gender: {gender} </p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Nation */}
-          <p> Nation: {props.nation}</p>
+          <p> Nation: {nation}</p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Affiliation */}
-          <p> Affiliation: {props.affiliation} </p>
+          <p> Affiliation: {affiliation} </p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Constellation */}
-          <p> Constellation: {props.constellation}</p>
+          <p> Constellation: {constellation}</p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Birthday */}
-          <p> Birthday: {props.birthday}</p>
+          <p> Birthday: {birthday}</p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12 text-center">
+      <div className="row my-3">
+        <div className="col-lg-12">
           {/* Release Date */}
-          <p> Release Date: {props.release}</p>
+          <p> Release Date: {release}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default CharacterSideBar;
+export default CharacterSideBarDev;
