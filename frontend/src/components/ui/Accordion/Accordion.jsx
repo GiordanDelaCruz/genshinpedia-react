@@ -2,7 +2,7 @@ import react from "react";
 import Table from "../Table/Table";
 import { v4 as uuidv4 } from "uuid";
 
-function Accordion({ skillTalents, vision }) {
+function Accordion({ data, vision }) {
   const accordId = `collapse-${uuidv4()}`;
 
   return (
@@ -28,7 +28,7 @@ function Accordion({ skillTalents, vision }) {
               data-bs-parent=""
             >
               <div className="accordion-body">
-                <Table skillTalents={skillTalents} />
+                <Table data={data} />
               </div>
             </div>
           </div>

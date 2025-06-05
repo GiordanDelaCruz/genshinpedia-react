@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-function Table({ skillTalents }) {
+function Table({ data }) {
   return (
     <>
       <table className="table custom-table table-hover">
@@ -11,7 +11,7 @@ function Table({ skillTalents }) {
           </tr>
         </thead>
         <tbody>
-          {skillTalents.upgrades.map((elem, index) => {
+          {data.upgrades.map((elem, index) => {
             return (
               <tr key={uuidv4()}>
                 <td>{elem.name}</td>

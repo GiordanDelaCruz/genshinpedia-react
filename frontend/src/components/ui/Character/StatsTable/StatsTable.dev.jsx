@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-function StatsTableDev({ id, iconUrl, title, arrayData }) {
+function StatsTableDev({ id, iconUrlBase, title, arrayData }) {
   return (
     <>
       <div className="bg-dark text-white px-4 pt-2 pb-3 mb-5 rounded border shadow">
@@ -35,12 +35,13 @@ function StatsTableDev({ id, iconUrl, title, arrayData }) {
               return (
                 <tr key={uuidv4()}>
                   <td className="align-middle w-auto">
+                    {/* Conditionally choose the correct icon based on passive or constellation */}
                     <img
                       className="genshin-table-icon"
                       src={
                         title === "Constellations"
-                          ? `${iconUrl}${index + 1}`
-                          : `${iconUrl}${index}`
+                          ? `${iconUrlBase}${index + 1}`
+                          : `${iconUrlBase}${index}`
                       }
                       alt=""
                     />

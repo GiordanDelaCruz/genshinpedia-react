@@ -2,73 +2,84 @@ import react from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
-// React Components
-import Navbar from "../../components/ui/Navbar/Navbar.jsx";
-import Footer from "../../components/ui/Footer/Footer.jsx";
+// Utility function for character images
+import getCharacterAssets from "@utils/characterAssets.js";
 
 // Development Components
-import NavbarDev from "./../../components/ui/Navbar/Navbar.dev";
-import FooterDev from "./../../components/ui/Footer/Footer.dev";
-import CharacterInfoBlockTest from "../../components/ui/Character/InfoBlock/InfoBlock.dev.jsx";
-import CharacterInfoTableTest from "../../components/ui/Character/StatsTable/StatsTable.dev.jsx";
-import CharacterSideBarDev from "./../../components/ui/Character/CharacterSideBar/CharacterSideBar.dev";
-import CharacterIntroDev from "./../../components/ui/Character/CharacterIntro/CharacterIntro.dev";
-import Carousel from "../../components/ui/Carousel/Carousel.jsx";
+import NavbarDev from "@components/ui/Navbar/Navbar.dev";
+import FooterDev from "@components/ui/Footer/Footer.dev";
+import InfoBlockDev from "@components/ui/Character/InfoBlock/InfoBlock.dev";
+import StatsTableDev from "@components/ui/Character/StatsTable/StatsTable.dev";
+import CharacterSideBarDev from "@components/ui/Character/CharacterSideBar/CharacterSideBar.dev";
+import CharacterIntroDev from "@components/ui/Character/CharacterIntro/CharacterIntro.dev";
 
 function CharacterProfileDev() {
   const { state } = useLocation();
 
   if (!state) return <p>No character data found.</p>;
 
-  const characterId = state.id;
-  const name = state.name;
-  const title = state.title;
-  const vision = state.vision.toLowerCase();
-  const weapon = state.weapon.toLowerCase();
-  const gender = state.gender;
-  const nation = state.nation;
-  const affiliation = state.affiliation;
-  const rarity = state.rarity;
-  const release = state.release;
-  const constellation = state.constellation;
-  const birthday = state.birthday;
-  const description = state.description;
+  // Character Data
+  const {
+    id: characterId,
+    name,
+    title,
+    vision,
+    weapon,
+    gender,
+    nation,
+    affiliation,
+    rarity,
+    release,
+    constellation,
+    birthday,
+    description,
+    skillTalents: [normalAttackData, elementalSkillData, elementalBurstData],
+    passiveTalents,
+    constellations,
+  } = state;
 
-  const skillTalents = state.skillTalents;
-  const normalAttack = skillTalents[0];
-  const elementalSkill = skillTalents[1];
-  const elementalBurst = skillTalents[2];
-  const passiveTalents = state.passiveTalents;
-  const constellations = state.constellations;
+  // Character assets
+  const {
+    galleryImages,
+    characterIcon,
+    visionIcon,
+    weaponIcon,
+    nationIcon,
+    skillTalentIcons: {
+      normalAttackIcon,
+      elementalSkillIcon,
+      elementalBurstIcon,
+    },
+    passiveTalentBaseUrl,
+    constellationBaseUrl,
+    characterCardUrl,
+  } = getCharacterAssets(characterId, vision, weapon, nation);
 
-  // Carosel
-  const galleryImages = [
-    `https://genshin.jmp.blue/characters/${characterId}/card/`,
-    `https://genshin.jmp.blue/characters/${characterId}/gacha-card`,
-    `https://genshin.jmp.blue/characters/${characterId}/namecard-background`,
-    `https://genshin.jmp.blue/characters/${characterId}/gacha-splash`,
+  // Data and icons for skill talents
+  const talentData = [
+    {
+      id: "normalAttack",
+      iconUrl: normalAttackIcon,
+      data: normalAttackData,
+    },
+    {
+      id: "elementalSkill",
+      iconUrl: elementalSkillIcon,
+      data: elementalSkillData,
+    },
+    {
+      id: "elementalBurst",
+      iconUrl: elementalBurstIcon,
+      data: elementalBurstData,
+    },
   ];
-
-  const characterIconUrl = `https://genshin.jmp.blue/characters/${characterId}/icon`;
-  const visionUrl = `https://genshin.jmp.blue/elements/${vision}/icon/`;
-  const weaponUrl = `/images/${weapon}.webp`;
-  const nationUrl = `https://genshin.jmp.blue/nations/${nation.toLowerCase()}/icon`;
-  const normalAttackIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-na`;
-  const elementalSkillIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-skill`;
-  const elementalBurstIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-burst`;
-  const passiveTalentIconUrl = `https://genshin.jmp.blue/characters/${characterId}/talent-passive-`;
-  const constellationIconUrl = `https://genshin.jmp.blue/characters/${characterId}/constellation-`;
-  const characterCardUrl = `https://genshin.jmp.blue/characters/${characterId}/card/`;
 
   return (
     <>
       {/* Navbar */}
-      <Navbar isCharacterPage={true} />
+      <NavbarDev isCharacterPage={true} />
 
       <div className="container my-5 px-4">
-        <div className="">
-          {/* <Carousel galleryImages={galleryImages} /> */}
-        </div>
         <div className="row">
           {/* Sidebar - shown FIRST on small screens, SECOND on large screens */}
           <div className="col-lg-3 order-1 order-lg-2">
@@ -76,9 +87,9 @@ function CharacterProfileDev() {
               rarity={rarity}
               imageUrl={characterCardUrl}
               galleryImages={galleryImages}
-              visionUrl={visionUrl}
-              weaponUrl={weaponUrl}
-              nationUrl={nationUrl}
+              visionUrl={visionIcon}
+              weaponUrl={weaponIcon}
+              nationUrl={nationIcon}
               gender={gender}
               nation={nation}
               affiliation={affiliation}
@@ -91,40 +102,36 @@ function CharacterProfileDev() {
           {/* Intro - shown SECOND on small screens, FIRST on large screens */}
           <div className="col-lg-9 order-2 order-lg-1">
             <CharacterIntroDev
-              characterIconUrl={characterIconUrl}
-              visionUrl={visionUrl}
-              weaponUrl={weaponUrl}
-              nationUrl={nationUrl}
+              characterIconUrl={characterIcon}
+              visionUrl={visionIcon}
+              weaponUrl={weaponIcon}
+              nationUrl={nationIcon}
               name={name}
               title={title}
               description={description}
             />
-            <CharacterInfoBlockTest
-              id={"normalAttack"}
-              iconURL={normalAttackIconUrl}
-              skillTalent={normalAttack}
-              vision={vision}
-            />
-            <CharacterInfoBlockTest
-              id={"elementalSkill"}
-              iconURL={elementalSkillIconUrl}
-              skillTalent={elementalSkill}
-              vision={vision}
-            />
-            <CharacterInfoBlockTest
-              id={"elementalBurst"}
-              iconURL={elementalBurstIconUrl}
-              skillTalent={elementalBurst}
-              vision={vision}
-            />
+
+            {/* Load Normal, Skill, & Burst blocks */}
+            {talentData.map((talent) => {
+              return (
+                <>
+                  <InfoBlockDev
+                    id={talent.id}
+                    iconUrl={talent.iconUrl}
+                    data={talent.data}
+                    vision={vision}
+                  />
+                </>
+              );
+            })}
           </div>
         </div>
 
         <div className="row">
           <div className="col-lg-12">
-            <CharacterInfoTableTest
+            <StatsTableDev
               id={"passiveTalents"}
-              iconUrl={passiveTalentIconUrl}
+              iconUrlBase={passiveTalentBaseUrl}
               title={"Passive Talents"}
               arrayData={passiveTalents}
             />
@@ -132,9 +139,9 @@ function CharacterProfileDev() {
         </div>
         <div className="row">
           <div>
-            <CharacterInfoTableTest
+            <StatsTableDev
               id={"constellations"}
-              iconUrl={constellationIconUrl}
+              iconUrlBase={constellationBaseUrl}
               title={"Constellations"}
               arrayData={constellations}
             />
@@ -143,7 +150,7 @@ function CharacterProfileDev() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <FooterDev />
     </>
   );
 }
