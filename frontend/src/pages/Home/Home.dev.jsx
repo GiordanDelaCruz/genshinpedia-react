@@ -1,6 +1,6 @@
 // React Components
 import CharacterCardDev from "@components/ui/Character/CharacterCard/CharacterCard.dev";
-import Intro from "@components/ui/Homepage/Intro.jsx";
+import Intro from "@components/ui/Homepage/Intro";
 import NavbarDev from "@components/ui/Navbar/Navbar.dev";
 import FooterDev from "@components/ui/Footer/Footer.dev";
 
@@ -11,7 +11,7 @@ import characters from "@data/characters.js";
 import chunkArray from "@utils/chunkArray.js";
 
 /**
- * Home Component
+ * HomeDev Component
  *
  * Renders the landing page of the application.
  * Displays a sample of Genshin Impact character cards in a grid layout.
@@ -21,7 +21,7 @@ import chunkArray from "@utils/chunkArray.js";
  * @component
  * @returns {JSX.Element} Rendered home page content.
  */
-function Home() {
+function HomeDev() {
   // Group characters into chunks of 4 per row for grid display
   const characterChunks = chunkArray(characters, 4);
 
@@ -74,4 +74,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeDev;

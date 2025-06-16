@@ -14,10 +14,6 @@ const devRoutes = [
     element: <HomeDev />,
   },
   {
-    path: "/character-profile",
-    element: <CharacterProfileDev />,
-  },
-  {
     path: "/characters/:id",
     element: <CharacterProfileDev />,
   },
@@ -28,10 +24,6 @@ const prodRoutes = [
     element: <Home />,
   },
   {
-    path: "/character-profile",
-    element: <CharacterProfile />,
-  },
-  {
     path: "/characters/:id",
     element: <CharacterProfile />,
   },
@@ -39,7 +31,7 @@ const prodRoutes = [
 
 // Conditionally select appropriate routes
 const isDev = import.meta.env.MODE === "development";
-const routes = isDev ? devRoutes : prodRoutes;
+const routes = !isDev ? devRoutes : prodRoutes;
 
 const router = createBrowserRouter(routes);
 

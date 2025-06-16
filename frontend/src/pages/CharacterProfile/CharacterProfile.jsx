@@ -1,11 +1,17 @@
-import react from "react";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+// React Imports
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-// Utility function for character images
+// External Libraries
+import axios from "axios";
+
+// Helper function for generating image and icon URLs based on character data
 import getCharacterAssets from "@utils/characterAssets.js";
 
-// Development Components
+// Environment Variable for backend API base URL
+const BACKEND_API = import.meta.env.VITE_BACKEND_API;
+
+// UI Components
 import Navbar from "@components/ui/Navbar/Navbar";
 import Footer from "@components/ui/Footer/Footer";
 import InfoBlock from "@components/ui/Character/InfoBlock/InfoBlock";
@@ -13,14 +19,53 @@ import StatsTable from "@components/ui/Character/StatsTable/StatsTable";
 import CharacterSideBar from "@components/ui/Character/CharacterSideBar/CharacterSideBar";
 import CharacterIntro from "@components/ui/Character/CharacterIntro/CharacterIntro";
 
+/**
+ * CharacterProfile Component
+ *
+ * Displays a detailed profile page for a specific Genshin Impact character.
+ * Fetches character data from the backend using the character ID from the URL.
+ * Renders the character's introduction, stats, passive talents, constellations,
+ * and a sidebar with additional information and images.
+ *
+ * Uses dynamic routing via `useParams` to determine which character to load.
+ *
+ * @component
+ * @returns {JSX.Element} Rendered character profile page.
+ */
 function CharacterProfile() {
-  const { state } = useLocation();
+  // Get character ID from the route parameter
+  const { id } = useParams();
 
-  if (!state) return <p>No character data found.</p>;
+  // State to store character data, loading status, and error messages
+  const [characterData, setCharacterData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Character Data
+  // Fetch character data from backend API when component mounts or ID changes
+  useEffect(() => {
+    async function fetchCharacterData() {
+      try {
+        const response = await axios.get(`${BACKEND_API}/characters/${id}`);
+        setCharacterData(response.data);
+        setError(""); // Clear previous errors
+      } catch (err) {
+        console.error("Error fetching character data:", err);
+        setCharacterData(null);
+        setError("Character not found.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCharacterData();
+  }, [id]);
+
+  // Conditional rendering for loading or error states
+  if (loading) return <p>Loading...</p>;
+  if (!characterData) return <p>Character not found.</p>;
+
+  // Destructure character metadata for display
   const {
-    id: characterId,
     name,
     title,
     vision,
@@ -36,9 +81,9 @@ function CharacterProfile() {
     skillTalents: [normalAttackData, elementalSkillData, elementalBurstData],
     passiveTalents,
     constellations,
-  } = state;
+  } = characterData;
 
-  // Character assets
+  // Retrieve character-related image/icons assets
   const {
     galleryImages,
     characterIcon,
@@ -53,15 +98,11 @@ function CharacterProfile() {
     passiveTalentBaseUrl,
     constellationBaseUrl,
     characterCardUrl,
-  } = getCharacterAssets(characterId, vision, weapon, nation);
+  } = getCharacterAssets(id, vision, weapon, nation);
 
-  // Data and icons for skill talents
+  // Talent data mapped to display sections dynamically
   const talentData = [
-    {
-      id: "normalAttack",
-      iconUrl: normalAttackIcon,
-      data: normalAttackData,
-    },
+    { id: "normalAttack", iconUrl: normalAttackIcon, data: normalAttackData },
     {
       id: "elementalSkill",
       iconUrl: elementalSkillIcon,
@@ -76,12 +117,13 @@ function CharacterProfile() {
 
   return (
     <>
-      {/* Navbar */}
+      {/* Sticky Navbar */}
       <Navbar isCharacterPage={true} />
 
+      {/* Main character content container */}
       <div className="container my-5 px-4">
         <div className="row">
-          {/* Sidebar - shown FIRST on small screens, SECOND on large screens */}
+          {/* Sidebar: Character card image, nation, dates */}
           <div className="col-lg-3 order-1 order-lg-2">
             <CharacterSideBar
               rarity={rarity}
@@ -98,8 +140,7 @@ function CharacterProfile() {
               release={release}
             />
           </div>
-
-          {/* Intro - shown SECOND on small screens, FIRST on large screens */}
+          {/* Main column: Intro & talents */}
           <div className="col-lg-9 order-2 order-lg-1">
             <CharacterIntro
               characterIconUrl={characterIcon}
@@ -111,38 +152,38 @@ function CharacterProfile() {
               description={description}
             />
 
-            {/* Load Normal, Skill, & Burst blocks */}
-            {talentData.map((talent) => {
-              return (
-                <>
-                  <InfoBlock
-                    id={talent.id}
-                    iconUrl={talent.iconUrl}
-                    data={talent.data}
-                    vision={vision}
-                  />
-                </>
-              );
-            })}
+            {/* Dynamic talent sections */}
+            {talentData.map((talent) => (
+              <InfoBlock
+                key={talent.id}
+                id={talent.id}
+                iconUrl={talent.iconUrl}
+                data={talent.data}
+                vision={vision}
+              />
+            ))}
           </div>
         </div>
 
+        {/* Passive talents table */}
         <div className="row">
           <div className="col-lg-12">
             <StatsTable
-              id={"passiveTalents"}
+              id="passiveTalents"
               iconUrlBase={passiveTalentBaseUrl}
-              title={"Passive Talents"}
+              title="Passive Talents"
               arrayData={passiveTalents}
             />
           </div>
         </div>
+
+        {/* Constellations table */}
         <div className="row">
           <div>
             <StatsTable
-              id={"constellations"}
+              id="constellations"
               iconUrlBase={constellationBaseUrl}
-              title={"Constellations"}
+              title="Constellations"
               arrayData={constellations}
             />
           </div>

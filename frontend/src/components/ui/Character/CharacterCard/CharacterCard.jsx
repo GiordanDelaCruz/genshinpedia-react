@@ -1,23 +1,24 @@
-import axios from "axios";
+// React Router hook for navigation
 import { useNavigate } from "react-router-dom";
+
+// Component-specific styles
 import "./CharacterCard.css";
 
-const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
-
-function CharacterCard({ name, iconUrl }) {
+function CharacterCard({ id, name, iconUrl }) {
   const navigate = useNavigate();
 
+  /**
+   * Handles user click on the character card.
+   * Navigates to the CharacterProfile page using the character's ID.
+   * Displays an alert if the ID is missing or if navigation fails.
+   */
   const handleClick = async () => {
-    if (!name) return alert("Character name missing");
-    try {
-      const response = await axios.post(`${CHARACTER_API}/character-search`, {
-        character: name,
-      });
+    if (!id) return alert("Character ID missing");
 
-      // Navigate and pass response data as route state
-      navigate("/character-profile", { state: response.data });
+    try {
+      navigate(`/characters/${id}`);
     } catch (err) {
-      console.error("Error in fetching character data:", err);
+      console.error("Error navigating to character profile:", err);
       alert("Failed to load character data.");
     }
   };

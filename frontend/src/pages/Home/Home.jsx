@@ -1,31 +1,41 @@
 // React Components
-import CharacterCard from "../../components/ui/Character/CharacterCard/CharacterCard.jsx";
-import Intro from "../../components/ui/Homepage/Intro.jsx";
-import Navbar from "../../components/ui/Navbar/Navbar.jsx";
-import Footer from "../../components/ui/Footer/Footer.jsx";
+import CharacterCard from "@components/ui/Character/CharacterCard/CharacterCard";
+import Intro from "@components/ui/Homepage/Intro";
+import Navbar from "@components/ui/Navbar/Navbar";
+import Footer from "@components/ui/Footer/Footer";
 
-// Data
-import characters from "./../../data/characters.js";
+// Sample Character Data for Homepage Display
+import characters from "@data/characters.js";
 
 // Utility
-import chunkArray from "../../utils/chunkArray.js";
+import chunkArray from "@utils/chunkArray.js";
 
-function Home(props) {
-  console.log("In production components.");
-
-  // Load 4 character cards per row
+/**
+ * Home Component
+ *
+ * Renders the landing page of the application.
+ * Displays a sample of Genshin Impact character cards in a grid layout.
+ *
+ * Character data is chunked into rows (4 per row) and rendered dynamically.
+ *
+ * @component
+ * @returns {JSX.Element} Rendered home page content.
+ */
+function Home() {
+  // Group characters into chunks of 4 per row for grid display
   const characterChunks = chunkArray(characters, 4);
-  console.log(characterChunks[0][0]);
 
   return (
     <>
+      {/* Sticky Navbar (non-character page variant) */}
       <Navbar isCharacterPage={false} />
 
-      {/* <!-- Character Display --> */}
+      {/* Main Content Container */}
       <div className="container">
         <Intro />
 
-        <div className="bg-dark text-white rounded border shadow px-5 py-4 my-5 ">
+        {/* Sample Characters Section */}
+        <div className="bg-dark text-white rounded border shadow px-5 py-4 my-5">
           <div className="row">
             <div className="col">
               <h3 className="fw-700 pb-3">
@@ -39,12 +49,17 @@ function Home(props) {
             </div>
           </div>
 
+          {/* Display characters in rows of 4 */}
           <div className="row bg-light text-black rounded border shadow py-3">
             {characterChunks.map((chunk, idx) => (
               <div key={idx} className="row py-2">
                 {chunk.map((char) => (
                   <div key={char.name} className="col-md-3 col-sm-6 col-6">
-                    <CharacterCard name={char.name} iconUrl={char.iconUrl} />
+                    <CharacterCard
+                      id={char.id}
+                      name={char.name}
+                      iconUrl={char.iconUrl}
+                    />
                   </div>
                 ))}
               </div>
@@ -53,6 +68,7 @@ function Home(props) {
         </div>
       </div>
 
+      {/* Footer */}
       <Footer />
     </>
   );

@@ -2,24 +2,34 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Utilities & APIs
-import axios from "axios";
-
 // Components
 import CharacterNavMenu from "./CharacterNavMenu";
 
 // Styles
 import "./Navbar.css";
 
-// Environment Variables
-const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
-
+/**
+ * Navbar Component
+ *
+ * Renders the top navigation bar for the application. Includes:
+ * - A sticky logo that links to the homepage
+ * - A collapsible mobile menu
+ * - A conditional character navigation menu (on character pages)
+ * - A search form to navigate to a specific character profile
+ *
+ * Navbar styling dynamically updates based on scroll position.
+ *
+ * @component
+ * @param {Object} props
+ * @param {boolean} props.isCharacterPage - Flag indicating whether to show the character menu.
+ * @returns {JSX.Element} Rendered navigation bar.
+ */
 function Navbar({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [scrolled, setScrolled] = useState(false);
 
-  // Update navbar style based on scroll position
+  // Toggle navbar background style based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -29,7 +39,10 @@ function Navbar({ isCharacterPage }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle character search submission
+  /**
+   * Handles search form submission by navigating to the character's profile page.
+   * @param {React.FormEvent<HTMLFormElement>} e - Form submission event
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,17 +51,7 @@ function Navbar({ isCharacterPage }) {
       return;
     }
 
-    try {
-      const response = await axios.post(`${CHARACTER_API}/character-search`, {
-        character: input,
-      });
-
-      // Redirect to character profile with data
-      navigate("/character-profile", { state: response.data });
-    } catch (err) {
-      console.error("Character not found or API error:", err);
-      alert("Character not found.");
-    }
+    navigate(`/characters/${input.trim()}`);
   };
 
   return (
@@ -59,7 +62,7 @@ function Navbar({ isCharacterPage }) {
         }`}
       >
         <div className="container-fluid">
-          {/* Logo */}
+          {/* Logo linking to homepage */}
           <a className="navbar-brand zoom" href="/">
             <img
               className="genshin-impact-logo"
@@ -69,7 +72,7 @@ function Navbar({ isCharacterPage }) {
             GenshinPedia
           </a>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile menu toggle button */}
           <button
             className="navbar-toggler"
             type="button"
@@ -82,15 +85,17 @@ function Navbar({ isCharacterPage }) {
             <span className="navbar-toggler-icon"></span>
           </button>
 
+          {/* Navbar links and search form */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {/* Conditional Character Menu */}
+            {/* Show character menu only if on a character page */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {isCharacterPage && <CharacterNavMenu />}
             </ul>
 
-            {/* Character Search Bar */}
+            {/* Character search form */}
             <form className="d-flex" onSubmit={handleSubmit} role="search">
               <input
+                id="character-search"
                 className="form-control me-2"
                 type="search"
                 value={input}
@@ -101,7 +106,6 @@ function Navbar({ isCharacterPage }) {
               <button
                 className={`btn ${!scrolled ? "btn-gold" : "btn-gold-inverse"}`}
                 type="submit"
-                value="Search"
               >
                 Search
               </button>

@@ -9,7 +9,7 @@ import CharacterNavMenu from "./CharacterNavMenu";
 import "./Navbar.css";
 
 /**
- * Navbar Component
+ * NavbarDev Component
  *
  * Renders the top navigation bar for the application. Includes:
  * - A sticky logo that links to the homepage
@@ -24,7 +24,7 @@ import "./Navbar.css";
  * @param {boolean} props.isCharacterPage - Flag indicating whether to show the character menu.
  * @returns {JSX.Element} Rendered navigation bar.
  */
-function Navbar({ isCharacterPage }) {
+function NavbarDev({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [scrolled, setScrolled] = useState(false);
@@ -117,4 +117,4 @@ function Navbar({ isCharacterPage }) {
   );
 }
 
-export default Navbar;
+export default NavbarDev;
