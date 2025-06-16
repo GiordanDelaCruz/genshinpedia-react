@@ -31,7 +31,7 @@ const prodRoutes = [
 
 // Conditionally select appropriate routes
 const isDev = import.meta.env.MODE === "development";
-const routes = !isDev ? devRoutes : prodRoutes;
+const routes = isDev ? devRoutes : prodRoutes;
 
 const router = createBrowserRouter(routes);
 
