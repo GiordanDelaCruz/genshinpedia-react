@@ -1,7 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 
-import Carousel from "../../Carousel/Carousel.jsx";
-
 function CharacterSideBarDev({
   rarity,
   imageUrl,
@@ -19,7 +17,6 @@ function CharacterSideBarDev({
   let dummyArr = [];
   if (rarity === 5) {
     dummyArr = [0, 0, 0, 0, 0];
-    console.log("rarity: " + rarity);
   } else if (rarity == 4) {
     dummyArr = [0, 0, 0, 0];
   } else {

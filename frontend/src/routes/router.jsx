@@ -36,3 +36,6 @@ const routes = !isDev ? devRoutes : prodRoutes;
 const router = createBrowserRouter(routes);
 
 export default router;
+
+// DEBUGGING
+console.log(`isDev ${isDev}`);
