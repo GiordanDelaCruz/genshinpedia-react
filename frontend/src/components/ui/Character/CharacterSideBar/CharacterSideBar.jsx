@@ -27,7 +27,7 @@ function CharacterSideBarDev({
   }
 
   return (
-    <div className="bg-dark text-white ounded border shadow text-center rounded">
+    <div className="bg-dark text-white rounded border shadow text-center rounded">
       <div className="row py-2">
         <div className="col-lg-12">
           {/* Rarity */}

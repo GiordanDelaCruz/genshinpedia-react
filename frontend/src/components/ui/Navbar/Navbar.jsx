@@ -14,9 +14,6 @@ import "./Navbar.css";
 // Environment Variables
 const CHARACTER_API = import.meta.env.VITE_CHARACTER_API;
 
-// Debug
-console.log("API URL:", CHARACTER_API);
-
 function Navbar({ isCharacterPage }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");

@@ -1,3 +1,8 @@
+/**
+ * Sample character data used for homepage display.
+ * Each object includes a character's unique ID, display name, and icon URL.
+ * Used to render a preview grid of characters on the home page.
+ */
 const characters = [
     {
       id: "ganyu",

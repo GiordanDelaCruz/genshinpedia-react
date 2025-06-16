@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 
 // Production Pages
-import Home from "./../pages/Home/Home";
-import CharacterProfile from "./../pages/CharacterProfile/CharacterProfile";
+import Home from "@pages/Home/Home";
+import CharacterProfile from "@pages/CharacterProfile/CharacterProfile";
 // Developemnt Pages
-import HomeDev from "./../pages/Home/Home.dev";
-import CharacterProfileDev from "./../pages/CharacterProfile/CharacterProfile.dev";
+import HomeDev from "@pages/Home/Home.dev";
+import CharacterProfileDev from "@pages/CharacterProfile/CharacterProfile.dev";
 
 // Define developement & production routes
 const devRoutes = [
@@ -15,6 +15,10 @@ const devRoutes = [
   },
   {
     path: "/character-profile",
+    element: <CharacterProfileDev />,
+  },
+  {
+    path: "/characters/:id",
     element: <CharacterProfileDev />,
   },
 ];
@@ -28,7 +32,7 @@ const prodRoutes = [
     element: <CharacterProfile />,
   },
   {
-    path: "/character/:characterName",
+    path: "/characters/:id",
     element: <CharacterProfile />,
   },
 ];

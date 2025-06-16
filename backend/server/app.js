@@ -22,28 +22,42 @@ app.get("/", (req, res) => {
 });
 
 // POST route
-app.post("/character-search", async (req, res) => {
-  console.log("Received body:", req.body); // ✅ Add this
-  const character = req.body.character?.toLowerCase().replace(" ", "-");
+// app.post("/character-search", async (req, res) => {
+//   console.log("Received body:", req.body); // ✅ Add this
+//   const character = req.body.character?.toLowerCase().replace(" ", "-");
+//   try {
+//     const result = await axios.get(`${API_URL}/characters/${character}`);
+//     res.send(result.data);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Character not found or server error" });
+//   }  
+// });
+
+// GET route for character data
+app.get("/characters/:id", async (req, res) => {
+  const characterId = req.params.id;
+  console.log(`Received Id: ${characterId}`)
   try {
-    const result = await axios.get(`${API_URL}/characters/${character}`);
+    const result = await axios.get(`${API_URL}/characters/${characterId}`);
     res.send(result.data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Character not found or server error" });
+    res.status(500).json({ error: "No character data founds" });
   }
 });
 
+
 // Test GET route
-app.get("/character-search-test", async (req, res) => {
-  try {
-    const result = await axios.get(`${API_URL}/characters/ganyu`);
-    res.send(result.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to fetch test character" });
-  }
-});
+// app.get("/character-search-test", async (req, res) => {
+//   try {
+//     const result = await axios.get(`${API_URL}/characters/ganyu`);
+//     res.send(result.data);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Failed to fetch test character" });
+//   }
+// });
 
 // Start server
 app.listen(port, () => {

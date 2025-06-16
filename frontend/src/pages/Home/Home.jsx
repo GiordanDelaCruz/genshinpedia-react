@@ -1,7 +1,5 @@
-import { v4 as uuidv4 } from "uuid";
-
 // React Components
-import CharacterCard from "../../components/ui/Character/CharcterCard/CharacterCard.jsx";
+import CharacterCard from "../../components/ui/Character/CharacterCard/CharacterCard.jsx";
 import Intro from "../../components/ui/Homepage/Intro.jsx";
 import Navbar from "../../components/ui/Navbar/Navbar.jsx";
 import Footer from "../../components/ui/Footer/Footer.jsx";
@@ -13,6 +11,8 @@ import characters from "./../../data/characters.js";
 import chunkArray from "../../utils/chunkArray.js";
 
 function Home(props) {
+  console.log("In production components.");
+
   // Load 4 character cards per row
   const characterChunks = chunkArray(characters, 4);
   console.log(characterChunks[0][0]);

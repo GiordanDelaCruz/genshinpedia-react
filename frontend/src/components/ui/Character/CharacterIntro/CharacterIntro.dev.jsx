@@ -33,7 +33,7 @@ function CharacterIntroDev({
           <div className="col-lg-12">
             {/* Title */}
             <h2 className="title-header"> {title}</h2>
-            {/* Decription */}
+            {/* Description */}
             <p> {description} </p>
           </div>
         </div>

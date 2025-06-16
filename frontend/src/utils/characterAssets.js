@@ -1,7 +1,7 @@
 // Utility function that returns asset URLs for a specific character.
 // These assets include icons, gallery images, and base paths for talents and constellations.
-function getCharacterAssets(characterId, vision, weapon, nation) {
-  const baseUrl = `https://genshin.jmp.blue/characters/${characterId}`;
+function getCharacterAssets(id, vision, weapon, nation) {
+  const baseUrl = `https://genshin.jmp.blue/characters/${id}`;
 
   // Full URLs for fixed icon images
   const visionIcon = `https://genshin.jmp.blue/elements/${vision.toLowerCase()}/icon/`;
