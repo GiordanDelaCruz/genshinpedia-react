@@ -18,7 +18,7 @@ import InfoBlock from "@components/ui/Character/InfoBlock/InfoBlock";
 import StatsTable from "@components/ui/Character/StatsTable/StatsTable";
 import CharacterSideBar from "@components/ui/Character/CharacterSideBar/CharacterSideBar";
 import CharacterIntro from "@components/ui/Character/CharacterIntro/CharacterIntro";
-
+import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
 /**
  * CharacterProfile Component
  *
@@ -61,7 +61,7 @@ function CharacterProfile() {
   }, [id]);
 
   // Conditional rendering for loading or error states
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (!characterData) return <p>Character not found.</p>;
 
   // Destructure character metadata for display

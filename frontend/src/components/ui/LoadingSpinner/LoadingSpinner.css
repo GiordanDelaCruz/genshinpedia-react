@@ -1,0 +1,16 @@
+.loading-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+}
+
+.loading-message{
+
+}
+
+.loader{
+    max-width: 10rem;
+    margin: 3.2rem 0;
+}
+

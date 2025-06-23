@@ -2,13 +2,13 @@
 import { motion } from "framer-motion";
 import "./LoadingSpinner.css"; // For custom styles
 
-import Navbar from "@components/ui/Navbar/Navbar";
-import Footer from "@components/ui/Footer/Footer";
+import NavbarDev from "@components/ui/Navbar/Navbar.dev";
+import FooterDev from "@components/ui/Footer/Footer.dev";
 
 export default function LoadingSpinner() {
   return (
     <>
-      <Navbar />
+      <NavbarDev />
       <div className="loading-wrapper">
         <div className="bg-dark text-white rounded border shadow text-center rounded px-5 py-5">
           <div className="bg-danger text-black rounded">
@@ -32,7 +32,7 @@ export default function LoadingSpinner() {
           </div>
         </div>
       </div>
-      <Footer />
+      <FooterDev />
     </>
   );
 }

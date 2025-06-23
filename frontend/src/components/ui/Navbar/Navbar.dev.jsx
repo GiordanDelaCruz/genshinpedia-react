@@ -24,7 +24,7 @@ import "./Navbar.css";
  * @param {boolean} props.isCharacterPage - Flag indicating whether to show the character menu.
  * @returns {JSX.Element} Rendered navigation bar.
  */
-function NavbarDev({ isCharacterPage }) {
+function NavbarDev({ isCharacterPage = false }) {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [scrolled, setScrolled] = useState(false);
