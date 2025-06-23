@@ -12,9 +12,7 @@ export default function LoadingSpinner() {
       <div className="loading-wrapper">
         <div className="bg-dark text-white rounded border shadow text-center rounded px-5 py-5">
           <div className="bg-danger text-black rounded">
-            <h1 className="loading-message text-white px-2 py-2">
-              Starting up server...
-            </h1>
+            <h1 className="loading-message text-white px-2 py-2">Loading...</h1>
           </div>
 
           <motion.img
