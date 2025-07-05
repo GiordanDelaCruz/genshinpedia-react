@@ -1,0 +1,47 @@
+.talent-icon{
+    margin: 0 10px 0 0;
+}
+
+.passive-talent-title{
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+/* X-Large screens */
+@media screen and (max-width: 1200px) {
+   
+}
+
+/* Large screens */
+@media screen and (max-width: 992px) {
+    .passive-talent-wrapper{
+        display: block;
+    }
+    .talent-card{
+        border: white;
+        border-style: solid;
+        border-radius: 2rem;
+        border-width: 2px;
+        padding: 15px;
+        margin: 0 0 2rem;
+        max-width: 100%;
+    }
+}
+
+/* Medium screens */
+@media screen and (max-width: 768px) {
+  
+}
+
+/* Small screens */
+@media screen and (max-width: 576px) {
+    .talent-card{
+        border: white;
+        border-style: solid;
+        border-radius: 2rem;
+        border-width: 2px;
+        padding: 15px;
+        margin: 0 0 2rem;
+    }
+}
+

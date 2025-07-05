@@ -1,3 +1,6 @@
+// Custom CSS
+import "./CharacterIntro.css";
+
 function CharacterIntroDev({
   characterIconUrl,
   visionUrl,
@@ -9,7 +12,7 @@ function CharacterIntroDev({
 }) {
   return (
     <>
-      <div className="bg-dark rounded text-white border shadow px-3 pt-3 pb-4">
+      <div className="genshin-card-container">
         <div className="row align-items-center">
           {/* Character name and icon */}
           <div className="col-md-6 d-flex justify-content-md-start justify-content-center align-items-center mb-2 mb-md-0">
@@ -18,7 +21,7 @@ function CharacterIntroDev({
               src={characterIconUrl}
               alt=""
             />
-            <h1 className="character-header mb-0">{name}</h1>
+            <h2 className="character-header mb-0">{name}</h2>
           </div>
 
           {/* Icons group */}
@@ -29,13 +32,11 @@ function CharacterIntroDev({
           </div>
         </div>
 
-        <div className="row bg-light text-black rounded py-2 px-2 mx-2 mt-3">
-          <div className="col-lg-12">
-            {/* Title */}
-            <h2 className="title-header"> {title}</h2>
-            {/* Description */}
-            <p> {description} </p>
-          </div>
+        <div className="row mt-2">
+          {/* Title */}
+          <h3 className="title-header"> {title}</h3>
+          {/* Description */}
+          <p> {description} </p>
         </div>
       </div>
     </>

@@ -9,9 +9,10 @@ function CharacterNavMenu() {
 
   // List of navigation items and their section ID
   const characterNavLinks = [
-    { name: "Normal Attack", id: "normalAttack" },
-    { name: "Elemental Skill", id: "elementalSkill" },
-    { name: "Elemental Burst", id: "elementalBurst" },
+    { name: "Skill Talents", id: "skillTalents" },
+    // { name: "Normal Attack", id: "normalAttack" },
+    // { name: "Elemental Skill", id: "elementalSkill" },
+    // { name: "Elemental Burst", id: "elementalBurst" },
     { name: "Passive Talents", id: "passiveTalents" },
     { name: "Constellations", id: "constellations" },
   ];

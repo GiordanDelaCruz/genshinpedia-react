@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 // External Libraries
 import axios from "axios";
 
+// Custom CSS
+import "./CharacterProfile.css";
+
 // Helper function for generating image and icon URLs based on character data
 import getCharacterAssets from "@utils/characterAssets.js";
 
@@ -15,10 +18,11 @@ const BACKEND_API = import.meta.env.VITE_BACKEND_API;
 import NavbarDev from "@components/ui/Navbar/Navbar.dev";
 import FooterDev from "@components/ui/Footer/Footer.dev";
 import InfoBlockDev from "@components/ui/Character/InfoBlock/InfoBlock.dev";
-import StatsTableDev from "@components/ui/Character/StatsTable/StatsTable.dev";
 import CharacterSideBarDev from "@components/ui/Character/CharacterSideBar/CharacterSideBar.dev";
 import CharacterIntroDev from "@components/ui/Character/CharacterIntro/CharacterIntro.dev";
-import LoadingSpinnerDev from "../../components/ui/LoadingSpinner/LoadingSpinner.dev";
+import LoadingSpinnerDev from "@components/ui/LoadingSpinner/LoadingSpinner.dev";
+import PassiveTalentsDev from "@components/ui/Character/PassiveTalents/PassiveTalents.dev";
+import ConstellationsDev from "../../components/ui/Character/Constellations/Constellation.dev";
 
 /**
  * CharacterProfileDev Component
@@ -122,10 +126,24 @@ function CharacterProfileDev() {
       <NavbarDev isCharacterPage={true} />
 
       {/* Main character content container */}
-      <div className="container my-5 px-4">
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Character Page
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
         <div className="row">
           {/* Sidebar: Character card image, nation, dates */}
-          <div className="col-lg-3 order-1 order-lg-2">
+          <div className="col-lg-4 order-2 order-lg-2">
             <CharacterSideBarDev
               rarity={rarity}
               imageUrl={characterCardUrl}
@@ -142,7 +160,7 @@ function CharacterProfileDev() {
             />
           </div>
           {/* Main column: Intro & talents */}
-          <div className="col-lg-9 order-2 order-lg-1">
+          <div className="d-grid gap-3 col-lg-8 order-1 order-lg-1">
             <CharacterIntroDev
               characterIconUrl={characterIcon}
               visionUrl={visionIcon}
@@ -153,7 +171,10 @@ function CharacterProfileDev() {
               description={description}
             />
 
-            {/* Dynamic talent sections */}
+            {/* Skill Talents */}
+            <h2 id="skillTalents" className="section-header scroll-target">
+              Skill Talents
+            </h2>
             {talentData.map((talent) => (
               <InfoBlockDev
                 key={talent.id}
@@ -163,30 +184,32 @@ function CharacterProfileDev() {
                 vision={vision}
               />
             ))}
-          </div>
-        </div>
 
-        {/* Passive talents table */}
-        <div className="row">
-          <div className="col-lg-12">
-            <StatsTableDev
-              id="passiveTalents"
-              iconUrlBase={passiveTalentBaseUrl}
-              title="Passive Talents"
-              arrayData={passiveTalents}
-            />
-          </div>
-        </div>
+            {/* Passive Talents */}
+            <div className="row d-grid gap-3 ">
+              <h2 id="passiveTalents" className="section-header scroll-target">
+                Passive Talents
+              </h2>
+              <PassiveTalentsDev
+                id=""
+                iconUrlBase={passiveTalentBaseUrl}
+                title="Passive Talents"
+                arrayData={passiveTalents}
+              />
+            </div>
 
-        {/* Constellations table */}
-        <div className="row">
-          <div>
-            <StatsTableDev
-              id="constellations"
-              iconUrlBase={constellationBaseUrl}
-              title="Constellations"
-              arrayData={constellations}
-            />
+            {/* Constellations */}
+            <div className="row d-grid gap-3 ">
+              <h2 id="constellations" className="section-header scroll-target">
+                Constellations
+              </h2>
+              <ConstellationsDev
+                id=""
+                iconUrlBase={constellationBaseUrl}
+                title="Constellations"
+                arrayData={constellations}
+              />
+            </div>
           </div>
         </div>
       </div>

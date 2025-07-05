@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.loading-message-container{
+    background-color: #F8DEA7;
+}
+
 .loading-message{
 
 }

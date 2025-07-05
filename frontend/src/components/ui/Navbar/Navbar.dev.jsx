@@ -32,7 +32,7 @@ function NavbarDev({ isCharacterPage = false }) {
   // Toggle navbar background style based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -57,7 +57,7 @@ function NavbarDev({ isCharacterPage = false }) {
   return (
     <>
       <nav
-        className={`navbar navbar-expand-lg sticky-top ${
+        className={`navbar navbar-expand-lg fixed-top ${
           !scrolled ? "bg-light navbar-light" : "bg-dark navbar-dark"
         }`}
       >

@@ -1,3 +1,7 @@
+.header-container{
+  display: flex;
+}
+
 .scroll-target {
   scroll-margin-top: 110px; /* adjust based on your navbar height */
 }

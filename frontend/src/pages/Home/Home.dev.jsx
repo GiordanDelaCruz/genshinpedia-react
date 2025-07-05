@@ -35,7 +35,7 @@ function HomeDev() {
         <Intro />
 
         {/* Sample Characters Section */}
-        <div className="bg-dark text-white rounded border shadow px-5 py-4 my-5">
+        <div className="genshin-card-container">
           <div className="row">
             <div className="col">
               <h3 className="fw-700 pb-3">
@@ -50,7 +50,7 @@ function HomeDev() {
           </div>
 
           {/* Display characters in rows of 4 */}
-          <div className="row bg-light text-black rounded border shadow py-3">
+          <div className="row">
             {characterChunks.map((chunk, idx) => (
               <div key={idx} className="row py-2">
                 {chunk.map((char) => (
