@@ -16,3 +16,24 @@
   width: 100%;
   background-color: #F8DEA7;
 }
+
+/* Search Button */
+.btn-gold{
+    background-color: #F8DEA7;
+    color: #333446;
+}
+.btn-gold:hover{
+    background-color: #333446;
+    border-color: #F8DEA7;
+    color: #F8DEA7;
+}
+
+.btn-gold-inverse{
+    background-color: #333446;
+    border-color: #F8DEA7;
+    color: #F8DEA7;
+}
+.btn-gold-inverse:hover{
+    background-color: #F8DEA7;
+    color: #333446;
+}
