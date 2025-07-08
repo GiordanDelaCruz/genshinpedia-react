@@ -1,8 +1,8 @@
 // React Components
-import CharacterCard from "@components/ui/Character/CharacterCard/CharacterCard";
+import CharacterCardxs from "@components/ui/Character/CharacterCard/CharacterCard.dev";
 import Intro from "@components/ui/Homepage/Intro";
-import Navbar from "@components/ui/Navbar/Navbar";
-import Footer from "@components/ui/Footer/Footer";
+import Navbarxs from "@components/ui/Navbar/Navbar.dev";
+import Footerxs from "@components/ui/Footer/Footer.dev";
 
 // Sample Character Data for Homepage Display
 import characters from "@data/characters.js";
@@ -11,7 +11,7 @@ import characters from "@data/characters.js";
 import chunkArray from "@utils/chunkArray.js";
 
 /**
- * Home Component
+ * Homexs Component
  *
  * Renders the landing page of the application.
  * Displays a sample of Genshin Impact character cards in a grid layout.
@@ -21,21 +21,21 @@ import chunkArray from "@utils/chunkArray.js";
  * @component
  * @returns {JSX.Element} Rendered home page content.
  */
-function Home() {
+function Homexs() {
   // Group characters into chunks of 4 per row for grid display
   const characterChunks = chunkArray(characters, 4);
 
   return (
     <>
       {/* Sticky Navbar (non-character page variant) */}
-      <Navbar isCharacterPage={false} />
+      <Navbarxs isCharacterPage={false} />
 
       {/* Main Content Container */}
       <div className="container">
         <Intro />
 
         {/* Sample Characters Section */}
-        <div className="bg-dark text-white rounded border shadow px-5 py-4 my-5">
+        <div className="genshin-card-container">
           <div className="row">
             <div className="col">
               <h3 className="fw-700 pb-3">
@@ -50,12 +50,12 @@ function Home() {
           </div>
 
           {/* Display characters in rows of 4 */}
-          <div className="row bg-light text-black rounded border shadow py-3">
+          <div className="row">
             {characterChunks.map((chunk, idx) => (
               <div key={idx} className="row py-2">
                 {chunk.map((char) => (
                   <div key={char.name} className="col-md-3 col-sm-6 col-6">
-                    <CharacterCard
+                    <CharacterCardxs
                       id={char.id}
                       name={char.name}
                       iconUrl={char.iconUrl}
@@ -69,9 +69,9 @@ function Home() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <Footerxs />
     </>
   );
 }
 
-export default Home;
+export default Homexs;
