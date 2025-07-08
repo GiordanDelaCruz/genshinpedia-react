@@ -130,11 +130,11 @@ function CharacterProfileDev() {
         <div className="row mt-5">
           <div className="col">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
                   <a href="/">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li className="breadcrumb-item active" aria-current="page">
                   Character Page
                 </li>
               </ol>

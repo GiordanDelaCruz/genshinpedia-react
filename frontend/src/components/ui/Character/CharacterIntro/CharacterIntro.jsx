@@ -1,4 +1,7 @@
-function CharacterIntroDev({
+// Custom CSS
+import "./CharacterIntro.css";
+
+function CharacterIntro({
   characterIconUrl,
   visionUrl,
   weaponUrl,
@@ -9,32 +12,30 @@ function CharacterIntroDev({
 }) {
   return (
     <>
-      <div className="bg-dark rounded text-white border shadow px-3 pt-3 pb-4">
-        <div className="row align-items-center">
+      <div className="genshin-card-container">
+        <div className="row align-items-center justify-content-between">
           {/* Character name and icon */}
-          <div className="col-md-6 d-flex justify-content-md-start justify-content-center align-items-center mb-2 mb-md-0">
+          <div className="col d-flex justify-content-start align-items-center">
             <img
               className="character-icon me-2"
               src={characterIconUrl}
               alt=""
             />
-            <h1 className="character-header mb-0">{name}</h1>
+            <h2 className="character-header mb-0">{name}</h2>
           </div>
 
           {/* Icons group */}
-          <div className="col-md-6 d-flex justify-content-md-end justify-content-center gap-2">
+          <div className="col d-flex justify-content-end align-items-center gap-2">
             <img className="nation-icon" src={nationUrl} alt="Nation" />
             <img className="weapon-icon" src={weaponUrl} alt="Weapon" />
             <img className="vision-icon" src={visionUrl} alt="Vision" />
           </div>
         </div>
 
-        <div className="row bg-light text-black rounded py-2 px-2 mx-2 mt-3">
-          <div className="col-lg-12">
-            {/* Title */}
-            <h2 className="title-header"> {title}</h2>
-            {/* Decription */}
-            <p> {description} </p>
+        <div className="row mt-2">
+          <div className="col-12">
+            <h3 className="title-header">{title}</h3>
+            <p>{description}</p>
           </div>
         </div>
       </div>
@@ -42,4 +43,4 @@ function CharacterIntroDev({
   );
 }
 
-export default CharacterIntroDev;
+export default CharacterIntro;

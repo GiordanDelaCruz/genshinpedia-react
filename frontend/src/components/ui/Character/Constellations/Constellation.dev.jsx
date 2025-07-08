@@ -5,7 +5,7 @@ function ConstellationsDev({ id, iconUrlBase, title, arrayData }) {
     <>
       {arrayData.map((elem, idx) => {
         return (
-          <div className="genshin-card-container">
+          <div key={`${title}_${idx}`} className="genshin-card-container">
             <div className="row">
               <div className="header-container">
                 <img

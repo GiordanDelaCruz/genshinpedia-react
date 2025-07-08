@@ -15,10 +15,11 @@ console.log(`Backend API: ${BACKEND_API}`);
 import Navbar from "@components/ui/Navbar/Navbar";
 import Footer from "@components/ui/Footer/Footer";
 import InfoBlock from "@components/ui/Character/InfoBlock/InfoBlock";
-import StatsTable from "@components/ui/Character/StatsTable/StatsTable";
 import CharacterSideBar from "@components/ui/Character/CharacterSideBar/CharacterSideBar";
 import CharacterIntro from "@components/ui/Character/CharacterIntro/CharacterIntro";
-import LoadingSpinner from "../../components/ui/LoadingSpinner/LoadingSpinner";
+import PassiveTalents from "@components/ui/Character/PassiveTalents/PassiveTalents";
+import Constellations from "@components/ui/Character/Constellations/Constellations";
+import LoadingSpinner from "@components/ui/LoadingSpinner/LoadingSpinner";
 /**
  * CharacterProfile Component
  *
@@ -121,10 +122,24 @@ function CharacterProfile() {
       <Navbar isCharacterPage={true} />
 
       {/* Main character content container */}
-      <div className="container my-5 px-4">
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col">
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <a href="/">Home</a>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Character Page
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
         <div className="row">
           {/* Sidebar: Character card image, nation, dates */}
-          <div className="col-lg-3 order-1 order-lg-2">
+          <div className="col-lg-4 order-2 order-lg-2">
             <CharacterSideBar
               rarity={rarity}
               imageUrl={characterCardUrl}
@@ -141,7 +156,7 @@ function CharacterProfile() {
             />
           </div>
           {/* Main column: Intro & talents */}
-          <div className="col-lg-9 order-2 order-lg-1">
+          <div className="d-grid gap-3 col-lg-8 order-1 order-lg-1">
             <CharacterIntro
               characterIconUrl={characterIcon}
               visionUrl={visionIcon}
@@ -152,7 +167,10 @@ function CharacterProfile() {
               description={description}
             />
 
-            {/* Dynamic talent sections */}
+            {/* Skill Talents */}
+            <h2 id="skillTalents" className="section-header scroll-target">
+              Skill Talents
+            </h2>
             {talentData.map((talent) => (
               <InfoBlock
                 key={talent.id}
@@ -162,30 +180,32 @@ function CharacterProfile() {
                 vision={vision}
               />
             ))}
-          </div>
-        </div>
 
-        {/* Passive talents table */}
-        <div className="row">
-          <div className="col-lg-12">
-            <StatsTable
-              id="passiveTalents"
-              iconUrlBase={passiveTalentBaseUrl}
-              title="Passive Talents"
-              arrayData={passiveTalents}
-            />
-          </div>
-        </div>
+            {/* Passive Talents */}
+            <div className="row d-grid gap-3 ">
+              <h2 id="passiveTalents" className="section-header scroll-target">
+                Passive Talents
+              </h2>
+              <PassiveTalents
+                id=""
+                iconUrlBase={passiveTalentBaseUrl}
+                title="Passive Talents"
+                arrayData={passiveTalents}
+              />
+            </div>
 
-        {/* Constellations table */}
-        <div className="row">
-          <div>
-            <StatsTable
-              id="constellations"
-              iconUrlBase={constellationBaseUrl}
-              title="Constellations"
-              arrayData={constellations}
-            />
+            {/* Constellations */}
+            <div className="row d-grid gap-3 ">
+              <h2 id="constellations" className="section-header scroll-target">
+                Constellations
+              </h2>
+              <Constellations
+                id=""
+                iconUrlBase={constellationBaseUrl}
+                title="Constellations"
+                arrayData={constellations}
+              />
+            </div>
           </div>
         </div>
       </div>

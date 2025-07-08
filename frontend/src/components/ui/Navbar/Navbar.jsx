@@ -32,7 +32,7 @@ function Navbar({ isCharacterPage = false }) {
   // Toggle navbar background style based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -57,7 +57,7 @@ function Navbar({ isCharacterPage = false }) {
   return (
     <>
       <nav
-        className={`navbar navbar-expand-lg sticky-top ${
+        className={`navbar navbar-expand-lg fixed-top ${
           !scrolled ? "bg-light navbar-light" : "bg-dark navbar-dark"
         }`}
       >
@@ -65,7 +65,7 @@ function Navbar({ isCharacterPage = false }) {
           {/* Logo linking to homepage */}
           <a className="navbar-brand zoom" href="/">
             <img
-              className="genshin-impact-logo"
+              className="navbar-logo"
               src="/images/paimon-logo.png"
               alt="Genshin Impact logo"
             />

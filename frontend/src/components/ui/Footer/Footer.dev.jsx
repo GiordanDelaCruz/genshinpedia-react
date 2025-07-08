@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-function FooterDev(props) {
+function FooterDev() {
   const year = new Date().getFullYear();
   return (
     <>
@@ -9,16 +9,16 @@ function FooterDev(props) {
           <div className="row">
             <div className="social-icon-wrapper">
               <a href="https://github.com/GiordanDelaCruz">
-                <i class="social-icon fab fa-2x fa-github big-zoom"></i>
+                <i className="social-icon fab fa-2x fa-github big-zoom"></i>
               </a>
               <a href="https://www.linkedin.com/in/giordan-dela-cruz/">
-                <i class="social-icon fa-2x fab fa-linkedin big-zoom"></i>
+                <i className="social-icon fa-2x fab fa-linkedin big-zoom"></i>
               </a>
               <a href="https://www.instagram.com/giordanandrew/">
-                <i class="social-icon fab fa-2x fa-instagram big-zoom"></i>
+                <i className="social-icon fab fa-2x fa-instagram big-zoom"></i>
               </a>
               <a href="mailto:giordandelacruz@gmail.com">
-                <i class="social-icon fas fa-2x fa-envelope big-zoom"></i>
+                <i className="social-icon fas fa-2x fa-envelope big-zoom"></i>
               </a>
             </div>
             <p className="copyright">Copyright&copy;GiordanAndrew {year}</p>

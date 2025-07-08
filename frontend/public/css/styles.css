@@ -2,7 +2,6 @@ html,
 body, 
 #root{
     font-family: 'Montserrat', sans-serif;
-    /* background-color: #7F8CAA; */
     background-color: white;
     /* background-image: url(/images/genshin-wish-background.webp); */
     /* background-image: url(https://upload-os-bbs.hoyolab.com/upload/2021/06/19/21867498/134c7cddf81c803ebd0876925f319f40_6631276759320516950.png?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70); */
@@ -20,6 +19,11 @@ p{
  
 }
 
+.navbar-logo{
+    height: 3.5rem;
+    margin: 0 0.5rem 0 0;
+}
+
 /* Font Weights */
 .fw-600{
     font-weight: 600;
@@ -29,10 +33,6 @@ p{
     font-weight: 700;
 }
 
-.genshin-impact-logo{
-    height: 3.5rem;
-    margin: 0 0.5rem 0 0;
-}
 
 .character-header{
     font-weight: 700;
@@ -101,12 +101,6 @@ p{
     transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-.ganyu-blue-test-1{
-    background-color: #5974BF;
-    background-color: #252D8C;
-    background-color: #C5DDF5
-
-}
 
 .gold-star{
     color: #F8DEA8;

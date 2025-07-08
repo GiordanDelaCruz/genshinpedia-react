@@ -1,6 +1,6 @@
-import "./PassiveTalents.css";
+import "./Constellations.css";
 
-function PassiveTalents({ id, iconUrlBase, title, arrayData }) {
+function Constellations({ id, iconUrlBase, title, arrayData }) {
   return (
     <>
       {arrayData.map((elem, idx) => {
@@ -9,17 +9,19 @@ function PassiveTalents({ id, iconUrlBase, title, arrayData }) {
             <div className="row">
               <div className="header-container">
                 <img
-                  src={`${iconUrlBase}${elem.level ? idx + 1 : 0}`}
+                  className="constellation-icon"
+                  src={`${iconUrlBase}${idx + 1}`}
                   alt=""
-                  className="talent-icon"
                 />
-                <h3 className="talent-name">{elem.name}</h3>
+                <h3 className="scroll-target constellation-name">
+                  {elem.name}
+                </h3>
               </div>
             </div>
 
-            <div className="row pt-2">
+            <div className="row mt-2">
               <h4 className="sub-header">{elem.unlock}</h4>
-              <p className="talent-description">{elem.description}</p>
+              <p className="constellation-description">{elem.description}</p>
             </div>
           </div>
         );
@@ -28,4 +30,4 @@ function PassiveTalents({ id, iconUrlBase, title, arrayData }) {
   );
 }
 
-export default PassiveTalents;
+export default Constellations;

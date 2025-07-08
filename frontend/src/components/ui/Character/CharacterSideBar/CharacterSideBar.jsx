@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
+import convertDateToWords from "@utils/dateConverter";
 
-function CharacterSideBarDev({
+function CharacterSideBar({
   rarity,
   imageUrl,
   galleryImages,
@@ -24,18 +24,13 @@ function CharacterSideBarDev({
   }
 
   return (
-    <div className="bg-dark text-white rounded border shadow text-center rounded">
-      <div className="row py-2">
-        <div className="col-lg-12">
+    <div className="genshin-card-container">
+      <div className="row">
+        <div className="col-lg-12 text-center">
           {/* Rarity */}
-          {dummyArr.map((elem, index) => {
-            return (
-              <i
-                key={uuidv4()}
-                className="fa-solid fa-star fa-2x my-2 gold-star"
-              ></i>
-            );
-          })}
+          {Array.from({ length: rarity }, (_, i) => (
+            <i key={i} className="fa-solid fa-star gold-star"></i>
+          ))}
         </div>
       </div>
       <div className="row">
@@ -44,44 +39,44 @@ function CharacterSideBarDev({
 
         {/* <Carousel galleryImages={galleryImages} /> */}
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Gender */}
           <p> Gender: {gender} </p>
         </div>
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Nation */}
           <p> Nation: {nation}</p>
         </div>
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Affiliation */}
           <p> Affiliation: {affiliation} </p>
         </div>
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Constellation */}
           <p> Constellation: {constellation}</p>
         </div>
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Birthday */}
-          <p> Birthday: {birthday}</p>
+          <p> Birthday: {convertDateToWords(birthday)}</p>
         </div>
       </div>
-      <div className="row my-3">
+      <div className="row">
         <div className="col-lg-12">
           {/* Release Date */}
-          <p> Release Date: {release}</p>
+          <p> Release Date: {convertDateToWords(release)}</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default CharacterSideBarDev;
+export default CharacterSideBar;
