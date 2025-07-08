@@ -10,7 +10,7 @@ import getCharacterAssets from "@utils/characterAssets.js";
 
 // Environment Variable for backend API base URL
 const BACKEND_API = import.meta.env.VITE_BACKEND_API;
-console.log(`Backend API: ${BACKEND_API}`);
+
 // UI Components
 import Navbar from "@components/ui/Navbar/Navbar";
 import Footer from "@components/ui/Footer/Footer";

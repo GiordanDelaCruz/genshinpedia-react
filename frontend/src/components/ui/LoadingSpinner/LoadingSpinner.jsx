@@ -2,13 +2,13 @@
 import { motion } from "framer-motion";
 import "./LoadingSpinner.css"; // For custom styles
 
-import NavbarDev from "@components/ui/Navbar/Navbar.dev";
-import FooterDev from "@components/ui/Footer/Footer.dev";
+import Navbar from "@components/ui/Navbar/Navbar";
+import Footer from "@components/ui/Footer/Footer";
 
 export default function LoadingSpinner() {
   return (
     <>
-      <NavbarDev />
+      <Navbar />
 
       <div className="loading-wrapper">
         <div className="genshin-card-container">
@@ -29,7 +29,7 @@ export default function LoadingSpinner() {
         </div>
       </div>
 
-      <FooterDev />
+      <Footer />
     </>
   );
 }

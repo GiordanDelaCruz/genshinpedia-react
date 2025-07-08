@@ -65,7 +65,7 @@ function NavbarDev({ isCharacterPage = false }) {
           {/* Logo linking to homepage */}
           <a className="navbar-brand zoom" href="/">
             <img
-              className="genshin-impact-logo"
+              className="navbar-logo"
               src="/images/paimon-logo.png"
               alt="Genshin Impact logo"
             />
